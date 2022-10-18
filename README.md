@@ -68,3 +68,18 @@ git push
 MarkDown 하러가기 ([클릭](https://github.com/xc7230/Git/blob/main/markdown.md))
 
 
+## 내가 원하는 폴더만 git에서 가져오기
+![image](./image/git/15.png)<br/>
+깃헙에서 특정 디렉토리만 가져오고 싶을 때가 있다. 그때 쓰는 방법을 알아보자
+```shell
+mkdir test  #깃허브 디렉토리를 받을 디렉토리 생성
+cd test 
+git init
+git remote add -f origin https://github.com/xc7230/Cloud.git    #리모트 폴더 지정
+git config core.sparseCheckout true # 일부 체크아웃 기능 활성화
+echo kubernetes_3tier/ >.git/info/sparse-checkout   # 받고 싶은 폴더 지정
+git pull origin main    # 받기
+ls  # 확인 디렉토리가 들어왔는지 확인한다.
+```
+![image](./image/git/16.png)<br/>
+성공적으로 들어왔다. 그런데 같은 이름의 이미지 폴더까지 같이 가져왔다.<br/>
